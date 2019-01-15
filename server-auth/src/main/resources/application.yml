@@ -1,0 +1,42 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    driverClassName: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: sa
+    platform: h2
+    initialization-mode: always
+    continue-on-error: true
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 5
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1 FROM DUAL
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  typeAliasesPackage: cn.strongme.serverauth.model
+  global-config:
+    db-config:
+      id-type: uuid
+      field-strategy: not_null
+      db-type: h2
+    refresh: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    jdbc-type-for-null: null
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+

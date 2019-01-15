@@ -1,0 +1,57 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+###
+
+
+
+
+GET http://localhost:8080/oauth/token_key
+Accept: application/json
+
+###
+#使用token获取resource
+
+GET http://localhost:8080/oauth/check_token?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic2VydmljZUEiXSwic2NvcGUiOlsicmVhZCJdLCJleHAiOjE1NDcxNDE5NzYsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiODI2ZmI2MTktNDBlOC00MjU2LTgxZjktYjkyY2M2NjIxNDc3IiwiY2xpZW50X2lkIjoiZmlyc3QtY2xpZW50In0.YH_CwQaTjaVhQeZ9KkUemKHzoVyk8fiqSFPHEqM0Yv1kxt_3g7W5J9nA8gxtfduh3HjoP5p9a8Qq9pFmy3oP7awMdZG0Y9bma1i9RGyQvIIVDKkr0CBV1VTd1ttDFvz4EaZJDsp9u5nQuif99CUxKhLJr9lFsjYoaxP-YH9XJao4laa-URS_vkQXXWBXZ3EMtveFVCn8hcoh4BRhapm4VetvaM6WjruW1UqDMPT_EbttSgxnxY2RtUD5gFn9iLbe5NsYCF4O2KjQJ02QiPJt8MPq5Iwt_ko6g_zCSRBHzkzfaAs69Y5UASqHZcCihRH5qzi3nNvxJRqKU0dSZJGbRg
+Content-Type: application/json
+
+# 请求token
+
+### authorization_code方式获取accessToken
+# 1. http://localhost:8080/oauth/authorize?response_type=code&client_id=first-client&redirect_uri=http://localhost:8082
+# 2.
+
+POST http://first-client:secret@localhost:8080/oauth/token?grant_type=authorization_code&scope=read&code=WPTU5C&redirect_uri=http://localhost:8082
+Content-Type: application/json
+
+{}
+
+### implicit方式获取accessToken
+
+# 1. http://localhost:8080/oauth/authorize?response_type=token&client_id=first-client&redirect_uri=http://localhost:8082
+
+### client_credentials方式获取accessToken
+
+POST http://first-client:secret@localhost:8080/oauth/token?grant_type=client_credentials&scope=read
+Content-Type: application/json
+
+{}
+
+### password方式获取accessToken
+
+POST http://first-client:secret@localhost:8080/oauth/token?grant_type=password&scope=read&username=admin&password=123
+Content-Type: application/json
+
+{}
+
+### 调用resource获取数据
+
+GET http://localhost:8081/api
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDcxMzExMzksInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImp0aSI6ImFkMjNiOGM3LTYzMmYtNDUyNC1iMWQ1LTAyZmNlZTA3NjI2MSIsImNsaWVudF9pZCI6ImZpcnN0LWNsaWVudCIsInNjb3BlIjpbInJlYWQiXX0.AqnmyXAWYi5vsFyDATCDMgekDHBKTUuYXSUGUJ-Lf89WSG2BnKSlXj7IcDV_dD6Ie0vw5izrWZ4EbXsmWqLALy1zjpDZZQ0t26FvpjLt4UNCU5bpY4YiAQg1sTg3HhDcV34bXYNqG2kSVwanDHMAPflZWnirOGVsZJuyFSipR9CrfRK4ZRvH3fIPfn9e7dDf1llwB6tROh4mB-_4pTdqcHwmQDZpT2p3cZ7ZzQawmfSC6bSHvSmbMuDnmwp0A7-HpYLT1P3Af7-QZu6CCaFBo0-ZIvATu1HSv49FIyBn8DgZ_O4uM7wA3PuXDaofRt5icIvjUJdqpJvtFJ9VzqBtGQ
+
+###

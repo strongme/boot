@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth2 Server Home</title>
+</head>
+<body>
+
+<h3>authorization_code方式获取accessToken</h3>
+<a href="http://localhost:8080/oauth/authorize?response_type=code&client_id=first-client&redirect_uri=http://localhost:8082">Authorize</a>
+<hr/>
+<h3>implicit方式获取accessToken</h3>
+<a href="http://localhost:8080/oauth/authorize?response_type=token&client_id=first-client&redirect_uri=http://localhost:8082">Authorize</a>
+<hr/>
+
+<a data-th-href="@{/dashboard}">Dashboard</a>
+</body>
+</html>

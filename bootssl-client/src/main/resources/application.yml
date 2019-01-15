@@ -1,0 +1,25 @@
+server:
+  port: 8007
+
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8008/admin
+        username: sba-admin
+        password: 1q2w3e4r
+        auto-registration: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+info:
+  tags:
+    environment: test
+
+
+

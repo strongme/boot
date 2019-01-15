@@ -1,0 +1,18 @@
+INSERT INTO OAUTH_CLIENT_DETAILS(CLIENT_ID,
+                                 RESOURCE_IDS,
+                                 CLIENT_SECRET,
+                                 SCOPE,
+                                 AUTHORIZED_GRANT_TYPES,
+                                 AUTHORITIES,
+                                 WEB_SERVER_REDIRECT_URI,
+                                 ACCESS_TOKEN_VALIDITY,
+                                 REFRESH_TOKEN_VALIDITY)
+VALUES ('first-client',
+        'serviceA',
+        '$2a$10$As3iTEjQ.0aqIAR806rwKO0l8U3NR5K.pejvRLGTGjLsGTOzVeWA2',
+        'read',
+        'client_credentials,authorization_code,password,implicit,refresh_token',
+        'ROLE_ADMIN',
+        'http://localhost:8082',
+        10800,
+        2592000);
